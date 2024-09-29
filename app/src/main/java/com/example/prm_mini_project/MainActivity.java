@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     // Variables
     Button howToPlayButton;
     Button signUnButton;
+    Button backgroundViewButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         // Mappings
         howToPlayButton = findViewById(R.id.howToPlayButton);
         signUnButton = findViewById(R.id.signUpButton);
+        backgroundViewButton = findViewById(R.id.backgroundViewButton);
 
         //region Set onClickListener For How Buttons
         howToPlayButton.setOnClickListener(v -> {
@@ -39,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, SignUpActivity.class));
         });
         //endregion
+        backgroundViewButton.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, BackgroundView.class));
+        });
 
     }
 }
