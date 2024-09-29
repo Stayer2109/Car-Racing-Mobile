@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         signUnButton.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, SignUpAcvitity.class));
+            startActivity(new Intent(MainActivity.this, SignUpActivity.class));
         });
         //endregion
 
