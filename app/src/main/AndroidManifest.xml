@@ -13,6 +13,12 @@
         android:theme="@style/Theme.PRM_Mini_Project"
         tools:targetApi="31">
         <activity
+            android:name=".ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity_result"
+            android:exported="false" />
+        <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
