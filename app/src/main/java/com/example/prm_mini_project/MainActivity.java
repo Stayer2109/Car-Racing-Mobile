@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     Button howToPlayButton;
     Button signUpButton;
     Button signInButton;
+    Button backgroundViewButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         howToPlayButton = findViewById(R.id.howToPlayButton);
         signUpButton = findViewById(R.id.signUpButton);
         signInButton = findViewById(R.id.signInButton);
+        backgroundViewButton = findViewById(R.id.backgroundViewButton);
 
         //region Set onClickListener For How Buttons
         howToPlayButton.setOnClickListener(v -> {
@@ -39,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
         signUpButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, SignUpActivity.class));
+        });
+        
+        backgroundViewButton.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, BackgroundView.class));
         });
 
         signInButton.setOnClickListener(v -> {
