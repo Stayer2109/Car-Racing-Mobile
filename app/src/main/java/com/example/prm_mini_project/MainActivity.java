@@ -13,7 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
     // Variables
     Button howToPlayButton;
-    Button signUnButton;
+    Button signUpButton;
+    Button signInButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,17 +29,20 @@ public class MainActivity extends AppCompatActivity {
 
         // Mappings
         howToPlayButton = findViewById(R.id.howToPlayButton);
-        signUnButton = findViewById(R.id.signUpButton);
+        signUpButton = findViewById(R.id.signUpButton);
+        signInButton = findViewById(R.id.signInButton);
 
         //region Set onClickListener For How Buttons
         howToPlayButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, HowToPlayActivity.class));
         });
 
-        signUnButton.setOnClickListener(v -> {
+        signUpButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, SignUpActivity.class));
         });
-        //endregion
 
+        signInButton.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, SignInActivity.class));
+        });
     }
 }

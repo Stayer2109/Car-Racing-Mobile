@@ -2,10 +2,15 @@ package com.example.prm_mini_project.Entity;
 
 public class User {
     private String username;
-    private String password;
-    private double balance;
+    private String hashedPassword;
+    private double balance = 0;
 
     public User() {
+    }
+
+    public User(String username, String hashedPassword) {
+        this.username = username;
+        this.hashedPassword = hashedPassword;
     }
 
     public double getBalance() {
@@ -16,12 +21,12 @@ public class User {
         this.balance = balance;
     }
 
-    public String getPassword() {
-        return password;
+    public String getHashedPassword() {
+        return hashedPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setHashedPassword(String hashedPassword) {
+        this.hashedPassword = hashedPassword;
     }
 
     public String getUsername() {
