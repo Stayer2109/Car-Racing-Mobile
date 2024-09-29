@@ -1,6 +1,5 @@
 package com.example.prm_mini_project;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
