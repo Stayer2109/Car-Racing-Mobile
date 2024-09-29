@@ -39,6 +39,13 @@ public class SignInActivity extends AppCompatActivity {
             return insets;
         });
 
+        //if user is already logged in, redirect to game activity
+        sessionManager = new SessionManager(this);
+        if (sessionManager.isLoggedIn()) {
+            startActivity(new Intent(SignInActivity.this, GameActivity.class));
+            finish();
+        }
+
         btnSignIn = findViewById(R.id.btnSignIn);
         btnExit = findViewById(R.id.btnExit);
         tvRegister = findViewById(R.id.tvRegister);
@@ -61,7 +68,6 @@ public class SignInActivity extends AppCompatActivity {
 
             if (login(username, password)) {
                 // if username and password are correct, start the game
-                sessionManager = new SessionManager(this);
                 sessionManager.createLoginSession(username);
                 startActivity(new Intent(SignInActivity.this, GameActivity.class));
                 finish();
@@ -72,6 +78,7 @@ public class SignInActivity extends AppCompatActivity {
         });
 
         btnExit.setOnClickListener(v -> {
+            startActivity(new Intent(SignInActivity.this, MainActivity.class));
             finish();
         });
 

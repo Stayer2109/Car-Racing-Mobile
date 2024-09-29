@@ -2,6 +2,7 @@ package com.example.prm_mini_project;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -16,6 +17,7 @@ public class GameActivity extends AppCompatActivity {
     SessionManager sessionManager;
     TextView tvTitle;
     String username;
+    Button btnSignOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,5 +45,12 @@ public class GameActivity extends AppCompatActivity {
 
         tvTitle = findViewById(R.id.tvTitle);
         tvTitle.setText("Chào mừng, " + username);
+        btnSignOut = findViewById(R.id.btnSignOut);
+
+        btnSignOut.setOnClickListener(v -> {
+            sessionManager.logoutUser();
+            startActivity(new Intent(GameActivity.this, MainActivity.class));
+            finish();
+        });
     }
 }

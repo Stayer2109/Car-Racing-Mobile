@@ -10,12 +10,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.prm_mini_project.Entity.SessionManager;
+
 public class MainActivity extends AppCompatActivity {
     // Variables
     Button howToPlayButton;
     Button signUpButton;
     Button signInButton;
     Button backgroundViewButton;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        sessionManager = new SessionManager(this);
+        if (sessionManager.isLoggedIn()) {
+            startActivity(new Intent(MainActivity.this, GameActivity.class));
+            finish();
+        }
 
         // Mappings
         howToPlayButton = findViewById(R.id.howToPlayButton);

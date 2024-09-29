@@ -51,6 +51,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         // Back Button Click Event
         backButton.setOnClickListener(v -> {
+            startActivity(new Intent(SignUpActivity.this, MainActivity.class));
             finish();
         });
 
