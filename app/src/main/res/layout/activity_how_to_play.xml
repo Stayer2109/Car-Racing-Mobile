@@ -19,12 +19,12 @@
                 android:id="@+id/backButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="548dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:text="Quay về"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/rule3" />
 
             <TextView
                 android:id="@+id/title"
@@ -47,7 +47,7 @@
                 android:layout_marginTop="76dp"
                 android:lineSpacingExtra="4sp"
                 android:text="Bạn sẽ đăng nhập vào trò chơi để bắt đầu cuộc chơi. Khi đăng nhập bạn sẽ có thể nhập số lượng người chơi bạn muốn có trong màn chơi của bạn. Số lượng người chơi được tạo trong màn chơi sẽ từ 6 - 8 người. "
-                android:textSize="18dp"
+                android:textSize="@dimen/font_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +59,7 @@
                 android:layout_marginTop="12dp"
                 android:lineSpacingExtra="4sp"
                 android:text="Mỗi tài khoản sẽ có mặc định 100$. Khi tham gia trò chơi, bạn sẽ có thể đặt cược cho từng đối tượng trong màn chơi, số lượng đối tượng có thể đặt cược được không vượt quá 50% số người chơi. Số tiền đặt cược được giao động từ 10$ - 50$."
-                android:textSize="18sp"
+                android:textSize="@dimen/font_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rule1" />
@@ -71,7 +71,7 @@
                 android:layout_marginTop="12dp"
                 android:lineSpacingExtra="4sp"
                 android:text="Khi chiến thắng, bạn sẽ được nhận số tiền tương ứng với số tiền đã đặt cược. Khi thua bạn sẽ bị trừ số tiền tương ứng với số tiền đã đặt cược."
-                android:textSize="18sp"
+                android:textSize="@dimen/font_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rule2" />

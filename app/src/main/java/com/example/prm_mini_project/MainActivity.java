@@ -10,11 +10,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.prm_mini_project.Entity.SessionManager;
+
 public class MainActivity extends AppCompatActivity {
     // Variables
     Button howToPlayButton;
-    Button signUnButton;
+    Button signUpButton;
+    Button signInButton;
     Button backgroundViewButton;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +31,16 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        sessionManager = new SessionManager(this);
+        if (sessionManager.isLoggedIn()) {
+            startActivity(new Intent(MainActivity.this, GameActivity.class));
+            finish();
+        }
+
         // Mappings
         howToPlayButton = findViewById(R.id.howToPlayButton);
-        signUnButton = findViewById(R.id.signUpButton);
+        signUpButton = findViewById(R.id.signUpButton);
+        signInButton = findViewById(R.id.signInButton);
         backgroundViewButton = findViewById(R.id.backgroundViewButton);
 
         //region Set onClickListener For How Buttons
@@ -37,13 +48,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, HowToPlayActivity.class));
         });
 
-        signUnButton.setOnClickListener(v -> {
+        signUpButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, SignUpActivity.class));
         });
-        //endregion
+        
         backgroundViewButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, BackgroundView.class));
         });
 
+        signInButton.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, SignInActivity.class));
+        });
     }
 }
