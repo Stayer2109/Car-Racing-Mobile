@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 
 public class SessionManager {
     private static final String PREF_NAME = "UserSession";
-    private static final String KEY_USERNAME = "username";
+    private static final String KEY_USER = "username";
     private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
 
     SharedPreferences sharedPreferences;
@@ -19,8 +19,8 @@ public class SessionManager {
     }
 
     // Method to store login session
-    public void createLoginSession(String username) {
-        editor.putString(KEY_USERNAME, username);   // Store username
+    public void createLoginSession(String user) {
+        editor.putString(KEY_USER, user);   // Store user json
         editor.putBoolean(KEY_IS_LOGGED_IN, true);  // Set login status to true
         editor.commit();                            // Save changes
     }
@@ -30,15 +30,21 @@ public class SessionManager {
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false);  // Default is false
     }
 
-    // Get stored session username
-    public String getUsername() {
-        return sharedPreferences.getString(KEY_USERNAME, null);  // Default is null
+    // Get stored session user json
+    public String getUserJson() {
+        return sharedPreferences.getString(KEY_USER, null);  // Default is null
     }
 
     // Logout method to clear session
     public void logoutUser() {
         editor.clear();
         editor.commit();  // Clear all session data
+    }
+
+    // Method to store user json with balance changes
+    public void updateUser(String user) {
+        editor.putString(KEY_USER, user);   // Store user json
+        editor.commit();                    // Save changes
     }
 }
 

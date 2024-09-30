@@ -31,17 +31,11 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        sessionManager = new SessionManager(this);
-        if (sessionManager.isLoggedIn()) {
-            startActivity(new Intent(MainActivity.this, GameActivity.class));
-            finish();
-        }
-
         // Mappings
         howToPlayButton = findViewById(R.id.howToPlayButton);
         signUpButton = findViewById(R.id.signUpButton);
         signInButton = findViewById(R.id.signInButton);
-        backgroundViewButton = findViewById(R.id.backgroundViewButton);
+        //backgroundViewButton = findViewById(R.id.backgroundViewButton);
 
         //region Set onClickListener For How Buttons
         howToPlayButton.setOnClickListener(v -> {
@@ -52,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, SignUpActivity.class));
         });
         
-        backgroundViewButton.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, BackgroundView.class));
-        });
+//        backgroundViewButton.setOnClickListener(v -> {
+//            startActivity(new Intent(MainActivity.this, BackgroundView.class));
+//        });
 
         signInButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, SignInActivity.class));

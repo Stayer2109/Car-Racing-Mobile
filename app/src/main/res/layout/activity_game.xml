@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -22,12 +21,19 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Game"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Username"
                 android:textAlignment="center"
-                android:textSize="@dimen/font_title"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp" />
+                android:textSize="@dimen/font_size"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnTopUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Nạp tiền"
+                android:textSize="@dimen/font_size" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -37,8 +43,6 @@
                     android:id="@+id/backgroundView1"
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginTop="30dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/background" />
 
@@ -46,17 +50,15 @@
                     android:id="@+id/backgroundView2"
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginTop="30dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/background2" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="120dp"
+                    android:layout_centerVertical="true"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="@dimen/padding">
 
                     <!-- Car 1 Layout: Position, Label, SeekBar, CheckBox, and Betting EditText -->
                     <LinearLayout
@@ -68,10 +70,12 @@
                             android:id="@+id/car1Position"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
+                            android:layout_gravity="center"
                             android:layout_marginBottom="5dp"
                             android:text="Position: 0"
-                            android:textSize="18sp" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size" />
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -83,9 +87,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:paddingEnd="10dp"
-                                android:text="Car 1"
-                                android:textSize="18sp" />
+                                android:paddingEnd="@dimen/car_padding"
+                                android:text="Xe 1"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size" />
 
                             <SeekBar
                                 android:id="@+id/car1"
@@ -97,20 +102,21 @@
                                 android:thumbOffset="1dp" />
 
                             <CheckBox
-                                android:id="@+id/betCar1"
+                                android:id="@+id/cbBetCar1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:paddingStart="10dp" />
+                                android:paddingHorizontal="@dimen/car_padding"
+                                android:textColor="@color/black" />
 
                             <EditText
-                                android:id="@+id/betAmountCar1"
+                                android:id="@+id/etBetAmountCar1"
                                 android:layout_width="50dp"
                                 android:layout_height="wrap_content"
                                 android:enabled="false"
-                                android:hint="Bet"
+                                android:hint="0"
                                 android:inputType="number"
-                                android:text="10" />
+                                android:textColor="@color/black" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -128,7 +134,8 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_marginBottom="5dp"
                             android:text="Position: 0"
-                            android:textSize="18sp" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -140,9 +147,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:paddingEnd="10dp"
-                                android:text="Car 2"
-                                android:textSize="18sp" />
+                                android:paddingEnd="@dimen/car_padding"
+                                android:text="Xe 2"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size" />
 
                             <SeekBar
                                 android:id="@+id/car2"
@@ -154,20 +162,21 @@
                                 android:thumbOffset="1dp" />
 
                             <CheckBox
-                                android:id="@+id/betCar2"
+                                android:id="@+id/cbBetCar2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:paddingStart="10dp" />
+                                android:paddingHorizontal="@dimen/car_padding"
+                                android:textColor="@color/black" />
 
                             <EditText
-                                android:id="@+id/betAmountCar2"
+                                android:id="@+id/etBetAmountCar2"
                                 android:layout_width="50dp"
                                 android:layout_height="wrap_content"
                                 android:enabled="false"
-                                android:hint="Bet"
+                                android:hint="0"
                                 android:inputType="number"
-                                android:text="10" />
+                                android:textColor="@color/black" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -185,7 +194,8 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_marginBottom="5dp"
                             android:text="Position: 0"
-                            android:textSize="18sp" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -197,9 +207,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:paddingEnd="10dp"
-                                android:text="Car 3"
-                                android:textSize="18sp" />
+                                android:paddingEnd="@dimen/car_padding"
+                                android:text="Xe 3"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size" />
 
                             <SeekBar
                                 android:id="@+id/car3"
@@ -211,35 +222,55 @@
                                 android:thumbOffset="1dp" />
 
                             <CheckBox
-                                android:id="@+id/betCar3"
+                                android:id="@+id/cbBetCar3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:paddingStart="10dp" />
+                                android:paddingHorizontal="@dimen/car_padding"
+                                android:textColor="@color/black" />
 
                             <EditText
-                                android:id="@+id/betAmountCar3"
+                                android:id="@+id/etBetAmountCar3"
                                 android:layout_width="50dp"
                                 android:layout_height="wrap_content"
                                 android:enabled="false"
-                                android:hint="Bet"
+                                android:hint="0"
                                 android:inputType="number"
-                                android:text="10" />
+                                android:textColor="@color/black" />
                         </LinearLayout>
                     </LinearLayout>
 
                 </LinearLayout>
             </RelativeLayout>
 
-            <Button
-                android:id="@+id/btnSignOut"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:text="Đăng xuất"
-                android:textSize="@dimen/font_size" />
+                android:orientation="horizontal"
+                android:padding="@dimen/padding"
+                android:weightSum="2">
 
+                <Button
+                    android:id="@+id/btnSignOut"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/cardview_light_background"
+                    android:text="Đăng xuất"
+                    android:textSize="@dimen/font_size" />
+
+                <Button
+                    android:id="@+id/btnPlay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/design_default_color_primary_variant"
+                    android:backgroundTint="@color/design_default_color_primary_variant"
+                    android:text="Bắt đầu"
+                    android:textSize="@dimen/font_size" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
