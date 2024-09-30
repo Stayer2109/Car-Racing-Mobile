@@ -9,7 +9,7 @@
     tools:context=".SignInActivity">
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Đăng nhập"
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="Đăng nhập"
+            android:text="Vào game"
             android:textSize="@dimen/font_size"
             />
 

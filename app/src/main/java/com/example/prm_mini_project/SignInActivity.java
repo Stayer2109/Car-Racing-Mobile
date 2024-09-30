@@ -27,6 +27,8 @@ public class SignInActivity extends AppCompatActivity {
     EditText etUsername, etPassword;
     SessionManager sessionManager;
     TextView tvRegister;
+    User user;
+    String userJson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +69,8 @@ public class SignInActivity extends AppCompatActivity {
             }
 
             if (login(username, password)) {
-                // if username and password are correct, start the game
-                sessionManager.createLoginSession(username);
+                // if userJson and password are correct, start the game
+                sessionManager.createLoginSession(userJson);
                 startActivity(new Intent(SignInActivity.this, GameActivity.class));
                 finish();
             }
@@ -108,9 +110,9 @@ public class SignInActivity extends AppCompatActivity {
         {
             String line;
             AuthService authService = new AuthService();
-            // get user by username from file
+            // get user by userJson from file
             while ((line = br.readLine()) != null) {
-                User user = authService.jsonToUser(line);
+                user = authService.jsonToUser(line);
                 if (user == null) {
                     continue;
                 }
@@ -118,6 +120,7 @@ public class SignInActivity extends AppCompatActivity {
                 if (user.getUsername().equals(username)) {
                     // check password
                     if (authService.checkPassword(password, user.getHashedPassword())) {
+                        userJson = line;
                         return true;
                     } else {
                         Toast.makeText(this, "Sai mật khẩu.", Toast.LENGTH_SHORT).show();

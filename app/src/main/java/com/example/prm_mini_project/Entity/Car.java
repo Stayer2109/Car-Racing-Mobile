@@ -7,12 +7,14 @@ public class Car implements Serializable {
     private int imageResourceId;
     private int position;
     private int earnings;
+    private boolean isCarSelected;
 
     public Car(String name, int imageResourceId) {
         this.name = name;
         this.imageResourceId = imageResourceId;
         this.position = 0;
         this.earnings = 0;
+        this.isCarSelected = false;
     }
 
     // Getters and Setters
@@ -46,5 +48,20 @@ public class Car implements Serializable {
 
     public void setEarnings(int earnings) {
         this.earnings = earnings;
+    }
+
+    public boolean isCarSelected() {
+        return isCarSelected;
+    }
+
+    public void setCarSelected(boolean carSelected) {
+        isCarSelected = carSelected;
+    }
+
+    // reset car
+    public void reset() {
+        this.position = 0;
+        this.earnings = 0;
+        this.isCarSelected = false;
     }
 }

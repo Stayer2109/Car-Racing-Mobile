@@ -46,6 +46,14 @@
             </TableLayout>
 
         </ScrollView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play Again"
+            android:id="@+id/btnPlayAgain"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp" />
     </LinearLayout>
 
 </RelativeLayout>
