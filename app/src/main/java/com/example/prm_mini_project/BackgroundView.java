@@ -15,7 +15,7 @@ public class BackgroundView extends AppCompatActivity {
     Handler handler = new Handler();
     Runnable runnable;
     int screenWidth;
-    int speed = 20; // Tốc độ di chuyển của background (pixel)
+    int speed = 8; // Tốc độ di chuyển của background (pixel)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +30,6 @@ public class BackgroundView extends AppCompatActivity {
             screenWidth = backgroundView1.getWidth();
             startAnimation();
         });
-
-
     }
 
     private void startAnimation() {

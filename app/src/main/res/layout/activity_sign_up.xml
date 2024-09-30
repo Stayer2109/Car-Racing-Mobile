@@ -16,17 +16,20 @@
         android:textSize="@dimen/font_title"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/llSignUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
+        app:layout_constraintVertical_bias="0.514" />
 
     <LinearLayout
         android:id="@+id/llSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
-        android:padding="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="88dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:padding="@dimen/activity_vertical_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="13dp">
 
         <EditText
             android:id="@+id/usernameEt"
@@ -34,9 +37,9 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/activity_vertical_margin"
             android:ems="10"
-            android:padding="@dimen/padding"
             android:hint="Tên tài khoản"
             android:inputType="text"
+            android:padding="@dimen/padding"
             android:textSize="@dimen/font_size" />
 
         <EditText
@@ -45,9 +48,9 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/activity_vertical_margin"
             android:ems="10"
-            android:padding="@dimen/padding"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
+            android:padding="@dimen/padding"
             android:textSize="@dimen/font_size" />
 
         <EditText
@@ -56,9 +59,9 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/activity_vertical_margin"
             android:ems="10"
-            android:padding="@dimen/padding"
             android:hint="Nhập lại mật khẩu"
             android:inputType="textPassword"
+            android:padding="@dimen/padding"
             android:textSize="@dimen/font_size" />
 
         <Button
@@ -90,10 +93,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:text="Đã có tài khoản? Đăng nhập ngay"
-            android:textSize="@dimen/font_size"
             android:textAlignment="center"
-            android:textStyle="italic"
-            />
+            android:textSize="@dimen/font_size"
+            android:textStyle="italic" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,25 +9,31 @@
     tools:context=".BackgroundView">
 
     <!-- Background Image 1 -->
-    <ImageView
-        android:id="@+id/backgroundView1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/background"
-        android:scaleType="fitXY"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
     <!-- Background Image 2 (đặt sau Image 1 để tạo hiệu ứng cuộn) -->
     <ImageView
+        android:id="@+id/backgroundView1"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="134dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/background" />
+
+    <ImageView
         android:id="@+id/backgroundView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/background"
-        android:scaleType="fitXY"
-        android:layout_alignParentTop="true"
+        android:layout_height="450dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="134dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/background" />
 </RelativeLayout>
