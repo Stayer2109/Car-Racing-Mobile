@@ -35,5 +35,5 @@
         android:layout_marginLeft="3dp"
         android:layout_marginTop="134dp"
         android:scaleType="fitXY"
-        android:src="@drawable/background" />
+        android:src="@drawable/background2" />
 </RelativeLayout>
