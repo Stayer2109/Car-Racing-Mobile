@@ -1,6 +1,8 @@
 package com.example.prm_mini_project.Entity;
 
-public class Car {
+import java.io.Serializable;
+
+public class Car implements Serializable {
     private String name;
     private int imageResourceId;
     private int position;
