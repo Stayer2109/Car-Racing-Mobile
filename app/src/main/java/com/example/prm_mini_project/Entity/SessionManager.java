@@ -2,6 +2,8 @@ package com.example.prm_mini_project.Entity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.prm_mini_project.Service.AuthService;
+
 public class SessionManager {
     private static final String PREF_NAME = "UserSession";
     private static final String KEY_USER = "username";
@@ -19,9 +21,17 @@ public class SessionManager {
     }
 
     // Method to store login session
-    public void createLoginSession(String user) {
-        editor.putString(KEY_USER, user);   // Store user json
+    public void createLoginSession(String userJson) {
+        editor.putString(KEY_USER, userJson);   // Store user json
         editor.putBoolean(KEY_IS_LOGGED_IN, true);  // Set login status to true
+
+        AuthService authService = new AuthService();
+        User user = authService.jsonToUser(userJson);
+        if (user.getBalance() == 0) {
+            user.setBalance(100);
+            userJson = authService.userToJson(user); // Update userJson with new balance
+            editor.putString(KEY_USER, userJson); // Store updated userJson
+        }
         editor.commit();                            // Save changes
     }
 

@@ -35,7 +35,7 @@ public class GameActivity extends AppCompatActivity {
     SessionManager sessionManager;
     String userJson;
     User user;
-    Button btnSignOut, btnPlay;
+    Button btnSignOut, btnPlay, btnTopUp;
     ImageView backgroundView1;
     ImageView backgroundView2;
     SeekBar car1SeekBar, car2SeekBar, car3SeekBar;
@@ -74,7 +74,6 @@ public class GameActivity extends AppCompatActivity {
         } else {
             userJson = sessionManager.getUserJson();
             user = authService.jsonToUser(userJson);
-            if (user.getBalance() == 0) user.setBalance(100);
         }
         loginSound = MediaPlayer.create(this, R.raw.login_success);
         if (sessionManager.isLoggedIn()) {
@@ -85,6 +84,7 @@ public class GameActivity extends AppCompatActivity {
         backgroundView1 = findViewById(R.id.backgroundView1);
         backgroundView2 = findViewById(R.id.backgroundView2);
         btnPlay = findViewById(R.id.btnPlay);
+        btnTopUp = findViewById(R.id.btnTopUp);
         car1SeekBar = findViewById(R.id.car1);
         car2SeekBar = findViewById(R.id.car2);
         car3SeekBar = findViewById(R.id.car3);
@@ -117,6 +117,10 @@ public class GameActivity extends AppCompatActivity {
         OnCheckedChanged(cbCar1, etBetAmountCar1);
         OnCheckedChanged(cbCar2, etBetAmountCar2);
         OnCheckedChanged(cbCar3, etBetAmountCar3);
+
+        btnTopUp.setOnClickListener(view -> {
+            startActivity(new Intent(GameActivity.this, RechargeActivity.class));
+        });
 
         btnPlay.setOnClickListener(v -> {
             // check if any car is selected and bet amount is entered
@@ -327,6 +331,26 @@ public class GameActivity extends AppCompatActivity {
             intent.putExtra("CAR_RESULTS", cars);
             intent.putExtra("USER", user);
             startActivity(intent);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateUserBalanceDisplay();
+    }
+
+    private void updateUserBalanceDisplay() {
+        user = authService.jsonToUser(sessionManager.getUserJson());
+        tvTitle.setText("Người chơi: " + user.getUsername() + "\nSố dư: " + user.getBalance() + " USD");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (loginSound != null) {
+            loginSound.release();
+            loginSound = null;
         }
     }
 }
