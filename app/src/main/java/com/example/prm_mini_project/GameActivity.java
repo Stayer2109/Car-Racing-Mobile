@@ -62,6 +62,7 @@ public class GameActivity extends AppCompatActivity {
         });
 
         sessionManager = new SessionManager(this);
+        user = (User) getIntent().getSerializableExtra("USER");
 
         if (!sessionManager.isLoggedIn()) {
             // If not logged in, redirect to login page
@@ -207,7 +208,14 @@ public class GameActivity extends AppCompatActivity {
 
         car.setEarnings(betAmount);
         car.setCarSelected(true);
+
+        // **UPDATE THE tvTitle HERE**
+        updateTitleTextView();
         return true;
+    }
+
+    private void updateTitleTextView() {
+        tvTitle.setText("Người chơi: " + user.getUsername() + "\nSố dư: " + user.getBalance() + " USD");
     }
 
     private void startAnimation() {
@@ -311,6 +319,7 @@ public class GameActivity extends AppCompatActivity {
         if (finishedCarsCount == 3) {
             Intent intent = new Intent(GameActivity.this, ResultActivity.class);
             intent.putExtra("CAR_RESULTS", cars);
+            intent.putExtra("USER", user);
             startActivity(intent);
         }
     }

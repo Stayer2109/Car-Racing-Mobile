@@ -40,6 +40,9 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
         sessionManager = new SessionManager(this);
         user = authService.jsonToUser(sessionManager.getUserJson());
+
+        user = (User) getIntent().getSerializableExtra("USER");
+
         btnPlayAgain = findViewById(R.id.btnPlayAgain);
         resultsTable = findViewById(R.id.resultsTable);
         totalEarningsTextView = findViewById(R.id.totalEarningsTextView);
@@ -56,6 +59,7 @@ public class ResultActivity extends AppCompatActivity {
 
         btnPlayAgain.setOnClickListener(v -> {
             Intent intent = new Intent(ResultActivity.this, GameActivity.class);
+            intent.putExtra("USER", user);
             startActivity(intent);
             finish();
         });
@@ -73,19 +77,20 @@ public class ResultActivity extends AppCompatActivity {
     private float calculateTotalEarnings(ArrayList<Car> raceResults) {
         float totalEarnings = 0;
         for (Car result : raceResults) {
-            switch (result.getPosition()) {
-                case 1:
-                    result.setEarnings(result.getEarnings());
-                    break;
-                case 2:
-                case 3:
-                    result.setEarnings(- result.getEarnings());
-                    break;
-                default:
-                    result.setEarnings(0);
-                    break;
+            if (result.isCarSelected()) { // Only calculate earnings if the car was bet on
+                switch (result.getPosition()) {
+                    case 1:
+                        result.setEarnings(result.getEarnings() * 2); // Apply bonus directly for winning car
+                        totalEarnings += result.getEarnings();
+                        break;
+                    case 2:
+                    case 3:
+                        totalEarnings -= result.getEarnings(); // Subtract earnings for 2nd and 3rd place
+                        break;
+                    default:
+                        break;
+                }
             }
-            totalEarnings += result.getEarnings();
         }
         return totalEarnings;
     }
@@ -112,8 +117,18 @@ public class ResultActivity extends AppCompatActivity {
             carNameTextView.setTextColor(Color.BLACK);
             row.addView(carNameTextView);
 
+            // Calculate actualEarnings here
+            int actualEarnings = 0;
+            if (result.isCarSelected()) { // Only calculate if the car was bet on
+                if (result.getPosition() == 1) {
+                    actualEarnings = result.getEarnings(); // Win
+                } else {
+                    actualEarnings = -result.getEarnings(); // Loss
+                }
+            }
+
             TextView earningsTextView = new TextView(this);
-            earningsTextView.setText(getEarningsString(result.getEarnings()));
+            earningsTextView.setText(getEarningsString(actualEarnings, result.getPosition()));
             earningsTextView.setPadding(8, 8, 8, 8);
             earningsTextView.setTextColor(Color.BLACK);
             row.addView(earningsTextView);
@@ -136,25 +151,25 @@ public class ResultActivity extends AppCompatActivity {
         }
     }
 
-    private String getEarningsString(int earnings) {
-        if (earnings > 0) {
+    private String getEarningsString(int earnings, int carPosition) {
+        if (carPosition == 1 && earnings > 0) { // Only add "+" if it's a win AND a positive amount
             return "+" + earnings;
         } else {
-            return String.valueOf(earnings);
+            return String.valueOf(earnings); // Let String.valueOf handle the sign naturally
         }
     }
 
     private boolean didPlayerWin(ArrayList<Car> raceResults) {
+        boolean isFirstPlaceBetCorrect = false;
+
         for (Car car : raceResults) {
-            if (car.getPosition() == 1 && isCarBetOnByPlayer(car)) {
-                return true;
+            if (car.getPosition() == 1 && car.isCarSelected()) {
+                isFirstPlaceBetCorrect = true;
+                break;
             }
         }
-        return false;
-    }
 
-    private boolean isCarBetOnByPlayer(Car car) {
-        return car.isCarSelected();
+        return isFirstPlaceBetCorrect;
     }
 
     // display total earnings and update user balance

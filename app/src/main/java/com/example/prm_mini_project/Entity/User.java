@@ -1,6 +1,8 @@
 package com.example.prm_mini_project.Entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String username;
     private String hashedPassword;
     private double balance = 0;
