@@ -1,6 +1,7 @@
 package com.example.prm_mini_project;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
@@ -49,6 +50,7 @@ public class GameActivity extends AppCompatActivity {
     CheckBox cbCar1, cbCar2, cbCar3;
     EditText etBetAmountCar1, etBetAmountCar2, etBetAmountCar3;
     AtomicBoolean isStop = new AtomicBoolean(false);
+    MediaPlayer loginSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,10 @@ public class GameActivity extends AppCompatActivity {
             userJson = sessionManager.getUserJson();
             user = authService.jsonToUser(userJson);
             if (user.getBalance() == 0) user.setBalance(100);
+        }
+        loginSound = MediaPlayer.create(this, R.raw.login_success);
+        if (sessionManager.isLoggedIn()) {
+            loginSound.start();
         }
 
         tvTitle = findViewById(R.id.tvTitle);
