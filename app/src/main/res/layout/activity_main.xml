@@ -13,7 +13,7 @@
         android:id="@+id/titleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Racing Car Game"
+        android:text="Vua Tốc Độ"
         android:textColor="@android:color/black"
         android:textSize="42sp"
         android:textStyle="bold"

@@ -130,6 +130,12 @@ public class GameActivity extends AppCompatActivity {
                 return;
             }
 
+//            ArrayList<EditText> ets = new ArrayList<EditText>();
+//            ets.add(etBetAmountCar1);
+//            ets.add(etBetAmountCar2);
+//            ets.add(etBetAmountCar3);
+//            if(!checkEtBet(ets)) return;
+
             // start the game
             if (!isStop.get()) {
                 backgroundView1.post(() -> {
@@ -192,6 +198,20 @@ public class GameActivity extends AppCompatActivity {
 
         return isAnyChecked;
     }
+
+//    private boolean checkEtBet(List<EditText> editTexts) {
+//        boolean isEnough = true;
+//        int total = 0;
+//        for (EditText et : editTexts) {
+//            total += Integer.parseInt(et.getText().toString());
+//            if (total > user.getBalance()) {
+//                Toast.makeText(GameActivity.this, "Số dư không đủ", Toast.LENGTH_SHORT).show();
+//                return !isEnough;
+//            }
+//        }
+//
+//        return isEnough;
+//    }
 
     // check if the checkbox is checked and the bet amount is entered, then set the car's earnings and carSelected
     private boolean checkEtBetAmount(CheckBox cb, EditText etBetAmount, Car car) {
